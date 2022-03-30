@@ -1,0 +1,58 @@
+.App {
+    padding: 30px;
+    display: flex;
+    width: 200px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px lightgrey;
+    margin: 20px;
+}
+
+.App > div {
+    margin-right: 50px;
+}
+
+button, input {
+    cursor: pointer;
+}
+
+
+.error {
+    border: 1px solid red;
+}
+
+.error-message {
+    color: red;
+}
+
+.active-filter {
+    background-color: cornflowerblue;
+    color: whitesmoke;
+}
+
+.is-done {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.flex-row {
+    display: flex;
+}
+
+.delTodoList {
+    position: fixed;
+    margin-left: 180px;
+    margin-top: -15px;
+    cursor: pointer;
+}
+
+.delTodoList button {
+    width: 0px;
+    height: 0px;
+    font-size: 18px;
+    color: darkgrey;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+}
+
