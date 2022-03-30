@@ -15,6 +15,9 @@
 button, input {
     cursor: pointer;
 }
+button {
+    background-color: lavender;
+}
 
 
 .error {

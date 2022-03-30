@@ -40,29 +40,20 @@ function App() {
 //функция удаления todoList
 
     const removeTodoList = (todoListId: string)=>{
-        let filteredTodoList = todoLists.filter(tl=>tl.id !==todoListId)
-        setTodoLists(filteredTodoList)
+        setTodoLists(todoLists.filter(tl=>tl.id !==todoListId))
         delete tasksObj[todoListId]
-        setTasks({...tasksObj})
     }
 
 
 //функция удаления таски
     const removeTask = (id: string, todoListId: string) => {
-        let tasks = tasksObj[todoListId]
-        let FilteredTasks = tasks.filter(t => t.id !== id)
-        tasksObj[todoListId] = FilteredTasks
-        setTasks({...tasksObj})
+        setTasks({...tasksObj, [todoListId]: tasksObj[todoListId].filter(t=>t.id !==id)})
     }
 
 // функции для сортировки
 
-    const changeFilter = (filter: FilterType, todoListID: string) => {
-        let todoList = todoLists.find(tl => tl.id === todoListID)
-        if (todoList) {
-            todoList.filter = filter
-            setTodoLists([...todoLists])
-        }
+    const changeFilter = (value: FilterType, todoListID: string) => {
+        setTodoLists(todoLists.map(el => el.id === todoListID ? {...el, filter: value} : el))
     }
 
 
@@ -74,22 +65,13 @@ function App() {
             title: title,
             isDone: false
         }
-        let tasks = tasksObj[todoListID]
-        let newTasks = [NewTask, ...tasks]
-        tasksObj[todoListID] = newTasks
-        setTasks({...tasksObj})
+        setTasks({...tasksObj, [todoListID]:[NewTask,...tasksObj[todoListID]]})
     }
 
 // функция изменения статуса таски - работа с чекбоксами
 
-    const changeTaskStatus = (taskID: string, isDone: boolean, todoListID: string) => {
-        let tasks = tasksObj[todoListID]
-        let task = tasks.find(t => t.id === taskID)
-        if (task) {
-            task.isDone = isDone
-
-            setTasks({...tasksObj})
-        }
+    const changeTaskStatus = (taskID: string, isDoneValue: boolean, todoListID: string) => {
+        setTasks({...tasksObj, [todoListID]: tasksObj[todoListID].map(el => el.id === taskID? {...el, isDone: isDoneValue} : el)})
     }
 
 
