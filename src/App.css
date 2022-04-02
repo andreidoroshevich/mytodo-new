@@ -1,7 +1,7 @@
 .App {
     padding: 30px;
     display: flex;
-    width: 200px;
+    width: 220px;
     background-color: whitesmoke;
     border-radius: 10px;
     box-shadow: 5px 5px 5px lightgrey;
@@ -44,7 +44,7 @@ button {
 
 .delTodoList {
     position: fixed;
-    margin-left: 180px;
+    margin-left: 190px;
     margin-top: -15px;
     cursor: pointer;
 }
@@ -57,5 +57,9 @@ button {
     font-weight: bold;
     border: none;
     background-color: transparent;
+}
+
+.newtodo {
+    margin: 20px;
 }
 

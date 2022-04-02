@@ -2,13 +2,14 @@ import React from 'react';
 import {TaskType} from "../App";
 import Button from "./Button";
 import './Main.css';
+import {EditableSpan} from "./EditableSpan";
 
 type TaskListType = {
     todoListID: string
     tasks: Array<TaskType>
     removeTask: (id: string, todoListID: string) => void
     changeTaskStatus: (taskID: string, isDone: boolean, todoListID: string) => void
-
+    changeTaskTitle: (taskID: string, newTitle: string, todoListID: string) => void
 }
 
 const TaskList = (props: TaskListType) => {
@@ -21,6 +22,10 @@ const TaskList = (props: TaskListType) => {
         props.changeTaskStatus(id, isDone, todoListId)
     }
 
+    const onChangeTitleHandler = (id: string, newValue: string, todoListId: string) => {
+        props.changeTaskTitle(id, newValue, todoListId)
+    }
+
 
     return (
         <div className={'main'}>
@@ -30,11 +35,17 @@ const TaskList = (props: TaskListType) => {
                         <div className={'flex'}>
                             <div className={'task'}>
                                 <li className={t.isDone ? 'is-done' : ''} key={t.id}>
-                                    <input type="checkbox" onChange={(e)=>onChangeCheckBoxHandler(t.id, e.currentTarget.checked, props.todoListID )}
-                                                      checked={t.isDone}/><span>{t.title}</span></li>
+                                    <input type="checkbox"
+                                           onChange={(e) => onChangeCheckBoxHandler(t.id, e.currentTarget.checked, props.todoListID)}
+                                           checked={t.isDone}/>
+                                    <EditableSpan
+                                        title={t.title}
+                                        onChange={(newValue) => onChangeTitleHandler(t.id, newValue, props.todoListID)}/>
+                                </li>
                             </div>
-                            <div className={'del_button'}><Button callBack={() => onClickRemoveHandler(t.id, props.todoListID)}
-                                                                  title={'x'}/></div>
+                            <div className={'del_button'}><Button
+                                callBack={() => onClickRemoveHandler(t.id, props.todoListID)}
+                                title={'x'}/></div>
                         </div>
                     )}
                 </ul>
@@ -43,5 +54,6 @@ const TaskList = (props: TaskListType) => {
         </div>
     );
 };
+
 
 export default TaskList;
