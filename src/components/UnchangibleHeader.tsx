@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-type unchangibleHeaderType = {
+type UnchangibleHeaderType = {
     title: string
 }
 
-const UnchangibleHeader = (props: unchangibleHeaderType) => {
+const UnchangibleHeader = (props: UnchangibleHeaderType) => {
 
 
     return (

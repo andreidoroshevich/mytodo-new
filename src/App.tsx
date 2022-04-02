@@ -4,8 +4,6 @@ import TodoList from "./components/TodoList";
 import {v1} from "uuid";
 import Input from "./components/Input";
 import Button from "./components/Button";
-import Header from "./components/Header";
-import unchangibleHeader from "./components/UnchangibleHeader";
 import UnchangibleHeader from "./components/UnchangibleHeader";
 
 export type TaskType = {
