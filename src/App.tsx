@@ -94,8 +94,13 @@ function App() {
             filter: 'All',
             title: title
         }
-        setTodoLists([NewTodolist, ...todoLists])
-        setTasks({...tasksObj, [NewTodolist.id]: []})
+        if (title.trim() !== '') {
+            setTodoLists([NewTodolist, ...todoLists])
+            setTasks({...tasksObj, [NewTodolist.id]: []})
+            setTitle('')
+        } else {
+            setError('Title is required')
+        }
     }
 
 // функция редактирования названия тудулиста

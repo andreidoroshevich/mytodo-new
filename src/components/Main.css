@@ -33,6 +33,7 @@
 }
 
 .tasklist {
+    width: 220px;
     display: flex;
     justify-content: flex-start;
 }
@@ -52,7 +53,7 @@ button {
 }
 
 .addbutton {
-    margin-left: 18px;
+    margin-left: 20px;
 }
 
 .maintitle {
