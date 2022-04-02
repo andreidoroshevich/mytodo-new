@@ -5,6 +5,8 @@ import {v1} from "uuid";
 import Input from "./components/Input";
 import Button from "./components/Button";
 import Header from "./components/Header";
+import unchangibleHeader from "./components/UnchangibleHeader";
+import UnchangibleHeader from "./components/UnchangibleHeader";
 
 export type TaskType = {
     id: string
@@ -105,7 +107,7 @@ function App() {
     return (
         <>
             <div className={"newtodo"}>
-                {/*<Header title={"Add new Todolist"} changeTodoListTitle={()=>{}}/>*/}
+                <UnchangibleHeader title={"Add new Todolist"}/>
                 <Input setError={setError} setTitle={setTitle} title={title} addTaskButtonHandler={addTodolist}
                        className={error ? 'error' : ''}/>
                 <Button callBack={() => addTodolist(title)} title={'+'}/>
