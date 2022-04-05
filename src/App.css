@@ -43,7 +43,7 @@ button {
 }
 
 .delTodoList {
-    position: fixed;
+    position: absolute;
     margin-left: 190px;
     margin-top: -15px;
     cursor: pointer;
@@ -61,5 +61,7 @@ button {
 
 .newtodo {
     margin: 20px;
+    position: relative;
+
 }
 
