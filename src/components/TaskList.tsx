@@ -8,7 +8,7 @@ type TaskListType = {
     todoListID: string
     tasks: Array<TaskType>
     removeTask: (id: string, todoListID: string) => void
-    changeTaskStatus: (taskID: string, isDone: boolean, todoListID: string) => void
+    changeTaskStatus: (todoListID: string, taskID: string, isDone: boolean) => void
     changeTaskTitle: (taskID: string, newTitle: string, todoListID: string) => void
 }
 
@@ -18,8 +18,8 @@ const TaskList = (props: TaskListType) => {
         props.removeTask(id, todoListId)
     }
 
-    const onChangeCheckBoxHandler = (id: string, isDone: boolean, todoListId: string) => {
-        props.changeTaskStatus(id, isDone, todoListId)
+    const onChangeCheckBoxHandler = (todoListId: string, id: string, isDone: boolean) => {
+        props.changeTaskStatus(todoListId, id, isDone)
     }
 
     const onChangeTitleHandler = (id: string, newValue: string, todoListId: string) => {
@@ -36,12 +36,13 @@ const TaskList = (props: TaskListType) => {
                             <div className={'task'}>
                                 <li className={t.isDone ? 'is-done' : ''} key={t.id}>
                                     <input type="checkbox"
-                                           onChange={(e) => onChangeCheckBoxHandler(t.id, e.currentTarget.checked, props.todoListID)}
+                                           onChange={(e) => onChangeCheckBoxHandler(props.todoListID, t.id, e.currentTarget.checked)}
                                            checked={t.isDone}/>
                                     <EditableSpan
                                         title={t.title}
                                         onChange={(newValue) => onChangeTitleHandler(t.id, newValue, props.todoListID)}/>
                                 </li>
+
                             </div>
                             <div className={'del_button'}><Button
                                 callBack={() => onClickRemoveHandler(t.id, props.todoListID)}
