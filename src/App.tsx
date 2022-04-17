@@ -61,6 +61,8 @@ function App() {
             {id: v1(), title: "Book", isDone: false},],
     })
 
+    console.log(todoLists)
+    console.log(tasks)
 
 
 //функция удаления таски
@@ -90,8 +92,9 @@ function App() {
 
 //функция удаления todoList
     const removeTodoList = (todoListID: string) => {
-        todoListsDispatch(removeTodoListAC(todoListID))
-        delete tasks[todoListID]
+        const action = removeTodoListAC(todoListID)
+        todoListsDispatch(action)
+        tasksDispatch(action)
     }
 
 // функция добавления тудулиста
@@ -154,7 +157,7 @@ function App() {
                 })
                 }
             </div>
-        </>
+                  </>
     );
 }
 

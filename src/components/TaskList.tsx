@@ -32,9 +32,9 @@ const TaskList = (props: TaskListType) => {
             <div className={'tasklist'}>
                 <ul>
                     {props.tasks.map(t =>
-                        <div className={'flex'}>
+                        <div className={'flex'} key={t.id}>
                             <div className={'task'}>
-                                <li className={t.isDone ? 'is-done' : ''} key={t.id}>
+                                <li className={t.isDone ? 'is-done' : ''}>
                                     <input type="checkbox"
                                            onChange={(e) => onChangeCheckBoxHandler(props.todoListID, t.id, e.currentTarget.checked)}
                                            checked={t.isDone}/>
