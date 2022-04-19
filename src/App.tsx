@@ -61,10 +61,6 @@ function App() {
             {id: v1(), title: "Book", isDone: false},],
     })
 
-    console.log(todoLists)
-    console.log(tasks)
-
-
 //функция удаления таски
     const removeTask = (taskID: string, todoListId: string) => {
         tasksDispatch(removeTaskAC(todoListId, taskID))
